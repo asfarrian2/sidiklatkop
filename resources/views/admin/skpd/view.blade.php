@@ -31,7 +31,7 @@
 			<ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.html">Dashboard </a></li>
 				<li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-				<li class="breadcrumb-item active">Seksi / Bidang</li>
+				<li class="breadcrumb-item active">SKPD/UPTD</li>
 			</ul>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 					<div class="row align-items-center">
 						<div class="col">
 							<div class="doctor-table-blk">
-								<h3>Tabel Seksi / Bidang</h3>
+								<h3>Tabel SKPD / UPTD</h3>
 								<div class="doctor-search-blk">
 									<div class="add-group">
 										<a type="button" href=""  data-bs-toggle="modal" data-bs-target="#tambahdata" class="btn btn-primary add-pluss ms-2"><img src="/assets/img/icons/plus.svg" alt=""></a>
@@ -67,7 +67,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Input Data</h4>
+                                <h4 class="modal-title">Input Data SKPD / UPTD</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="/adm/seksi/store" method="POST" id="formStore">
@@ -76,8 +76,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="field-3" class="form-label">Nama Seksi</label>
-                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Nama Seksi">
+                                            <label for="field-3" class="form-label">Nama</label>
+                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Nama SKPD / UPTD">
+                                            <label for="field-3" class="form-label">Alamat</label>
+                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Alamat SKPD / UPTD">
+                                            <label for="field-3" class="form-label">Nomor Telepon</label>
+                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Nomor Telepon SKPD / UPTD">
                                         </div>
                                     </div>
                                 </div>

@@ -26,6 +26,10 @@ Route::get('/adm/dashboard', [DashboardController::class, 'view']);
 //Crud Seksi/Bidang
 Route::get('/adm/seksi', [SeksiController::class, 'view']);
 Route::post('/adm/seksi/store', [SeksiController::class, 'store']);
+Route::post('/adm/seksi/edit', [SeksiController::class, 'edit']);
+Route::post('/adm/seksi/update', [SeksiController::class, 'update']);
+Route::post('/adm/seksi/stat', [SeksiController::class, 'stat']);
+Route::post('/adm/seksi/status', [SeksiController::class, 'status']);
 Route::post('/adm/seksi/hapus', [SeksiController::class, 'hapus']);
 Route::post('/adm/seksi/delete', [SeksiController::class, 'delete']);
 

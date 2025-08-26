@@ -48,11 +48,11 @@
 				<li class="nav-item dropdown has-arrow user-profile-list">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
 						<div class="user-names">
-							<h5>Liam Michael </h5>
-                        	<span>Seksi Pendidikan dan Pelatihan Usaha Kecil</span>
+							<h5>Asfar Rian </h5>
+                        	<span>Admin</span>
 						</div>
 						<span class="user-img">
-							<img  src="/assets/img/user-06.jpg"  alt="Admin">
+							<img  src="/assets/img/profile.png"  alt="Admin">
 						</span>
                     </a>
 					<div class="dropdown-menu">
@@ -81,17 +81,13 @@
 						</li>
                             <li class="menu-title">Master</li>
                         <li>
-							<a href="/adm/seksi" class="{{ Request::is('adm/seksi') ? 'active' : '' }}" ><span class="menu-side"><img src="/assets/img/icons/menu-icon-06.svg" alt=""></span> <span> Seksi / Bidang </span></a>
+							<a href="/adm/seksi" class="{{ Request::is('adm/seksi') ? 'active' : '' }}" ><span class="menu-side"><i class="fa fa-sitemap"></i></span> <span> Seksi / Bidang </span></a>
+						</li>
+                        <li>
+							<a href="/adm/skpd" class="{{ Request::is('adm/skpd') ? 'active' : '' }}"><span class="menu-side"><i class="fa fa-building"></i></span> <span> SKPD / UPTD </span></a>
 						</li>
                         <li class="submenu">
-							<a href="#"><span class="menu-side"><img src="/assets/img/icons/menu-icon-13.svg" alt=""></span> <span> Lokasi </span> <span class="menu-arrow"></span></a>
-							<ul style="display: none;">
-								<li><a href="invoices.html">Kab / Kota</a></li>
-								<li><a href="payments.html">Gedung</a></li>
-							</ul>
-						</li>
-                        <li class="submenu">
-							<a href="#"><span class="menu-side"><img src="/assets/img/icons/menu-icon-08.svg" alt=""></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
+							<a href="#"><span class="menu-side"><i class="fa fa-user-plus"></i></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
 								<li><a href="invoices.html">Pengajar</a></li>
 								<li><a href="payments.html">Peserta</a></li>
@@ -99,17 +95,17 @@
 						</li>
                         <li class="menu-title">Manajemen Diklat</li>
                         <li>
-							<a href="#"><span class="menu-side"><img src="/assets/img/icons/menu-icon-04.svg" alt=""></span> <span> Kegiatan Diklat </span></a>
+							<a href="#"><span class="menu-side"><i class="fa fa-calendar"></i></span> <span> Kegiatan Diklat </span></a>
 						</li>
                         <li>
-							<a href="#"><span class="menu-side"><img src="/assets/img/icons/menu-icon-02.svg" alt=""></span> <span> Pengajar Diklat </span></a>
+							<a href="#"><span class="menu-side"><i class="fa fa-user-md"></i></span> <span> Pengajar Diklat </span></a>
 						</li>
                         <li>
-							<a href="#"><span class="menu-side"><img src="/assets/img/icons/menu-icon-03.svg" alt=""></span> <span> Peserta Diklat</span></a>
+							<a href="#"><span class="menu-side"><i class="fa fa-users"></i></span> <span> Peserta Diklat</span></a>
 						</li>
                         <li class="menu-title">Manajemen Akun</li>
 						<li>
-							<a href="#"><span class="menu-side"><img src="/assets/img/icons/menu-icon-08.svg" alt=""></span> <span> Operator </span></a>
+							<a href="#"><span class="menu-side"><i class="fa fa-user-circle"></i></span> <span> Operator </span></a>
 						</li>
                         <br><br><br><br><br><br><br><br><br>
                         <li class="menu-title"><span>© 2025 Balatkop-UK Kalsel</span></li>

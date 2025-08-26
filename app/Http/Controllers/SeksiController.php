@@ -55,10 +55,55 @@ class SeksiController extends Controller
         }
     }
 
-    //Status Data
-    public function status($id_seksi)
+    //Edit Data
+    public function edit(Request $request)
     {
-        $id_seksi   = Crypt::decrypt($id_seksi);
+        $id_seksi = $request->id_seksi;
+        $id = Crypt::decrypt($id_seksi);
+
+        $seksi = DB::table('tb_seksi')
+        ->where('id_seksi', $id)
+        ->first();
+
+        return view('admin.seksi.edit', compact('id', 'seksi'));
+    }
+
+     public function update(Request $request)
+    {
+        $id = $request->id;
+        $nama = $request->nama;
+        $id_seksi = Crypt::decrypt($id);
+
+         $data = [
+            'nama_seksi'      => $nama
+        ];
+
+        $update = DB::table('tb_seksi')->where('id_seksi', $id_seksi)->update($data);
+          if ($update) {
+            return Redirect::back()->with(['success' => 'Data Berhasil Diubah']);
+        } else {
+            return Redirect::back()->with(['warning' => 'Data Gagal Diubah']);
+        }
+    }
+
+    //Status Data
+    public function stat(Request $request)
+    {
+        $id_seksi = $request->id_seksi;
+        $id = Crypt::decrypt($id_seksi);
+
+        $seksi = DB::table('tb_seksi')
+        ->where('id_seksi', $id)
+        ->first();
+
+        return view('admin.seksi.status', compact('id', 'seksi'));
+    }
+
+
+    public function status(Request $request)
+    {
+        $id = $request->id;
+        $id_seksi   = Crypt::decrypt($id);
 
         $seksi = DB::table('tb_seksi')
         ->where('id_seksi', $id_seksi)
@@ -105,8 +150,8 @@ class SeksiController extends Controller
         $delete = $request->id;
 
         return view('admin.seksi.hapus', compact('id', 'seksi'));
-
     }
+
 
     public function delete(Request $request)
     {
