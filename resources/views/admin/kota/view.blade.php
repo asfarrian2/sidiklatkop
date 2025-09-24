@@ -31,7 +31,7 @@
 			<ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.html">Dashboard </a></li>
 				<li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-				<li class="breadcrumb-item active">SKPD/UPTD</li>
+				<li class="breadcrumb-item active">Kabupaten / Kota</li>
 			</ul>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 					<div class="row align-items-center">
 						<div class="col">
 							<div class="doctor-table-blk">
-								<h3>Tabel SKPD / UPTD</h3>
+								<h3>Tabel Kabupaten / Kota</h3>
 								<div class="doctor-search-blk">
 									<div class="add-group">
 										<a type="button" href=""  data-bs-toggle="modal" data-bs-target="#tambahdata" class="btn btn-primary add-pluss ms-2"><img src="/assets/img/icons/plus.svg" alt=""></a>
@@ -67,40 +67,17 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Input Data SKPD / UPTD</h4>
+                                <h4 class="modal-title">Input Data</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/adm/skpd/store" method="POST" id="formStore">
+                            <form action="/adm/kota/store" method="POST" id="formStore">
                             @csrf
                             <div class="modal-body p-4">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="field-3" class="form-label">Nama</label>
-                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Nama SKPD / UPTD" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="field-3" class="form-label">Alamat</label>
-                                            <input type="text" class="form-control" id="field-3" name="alamat" placeholder="Alamat SKPD / UPTD" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Kab./Kota</label>
-                                            <div class="col-md-10">
-                                                <select class="form-control" name="kabupaten" required>
-                                                    <option value="">-- Pilih Kab./Kota --</option>
-                                                     @foreach ($kota as $d)
-                                                    <option value="{{ $d->id_kota }}">{{ $d->nama_kota }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="field-3" class="form-label">Nomor Telepon</label>
-                                            <input type="text" class="form-control" id="field-3" name="telepon" placeholder="Nomor Telepon SKPD / UPTD" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="field-3" class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="field-3" name="email" placeholder="Nomor Telepon SKPD / UPTD" required>
+                                            <label for="field-3" class="form-label">Nama Kabupaten / Kota</label>
+                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Nama Kabupaten / Kota">
                                         </div>
                                     </div>
                                 </div>
@@ -120,25 +97,17 @@
 						<thead>
 							<tr>
 								<th style="text-align:center;">No</th>
-								<th style="text-align:center;">Nama SKPD</th>
-                                <th style="text-align:center;">Alamat</th>
-                                <th style="text-align:center;">Kabupaten/Kota</th>
-                                <th style="text-align:center;">Telepon</th>
-                                <th style="text-align:center;">Email</th>
+								<th style="text-align:center;">Nama Kabupaten / Kota</th>
 								<th style="text-align:center;">Status</th>
 								<th ></th>
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach ($skpd as $d)
+                            @foreach ($kota as $d)
 							<tr>
 								<td style="text-align:center;">{{ $loop->iteration }}</td>
-								<td>{{ $d->nama_skpd}}</td>
-                                <td>{{ $d->alamat_skpd}}</td>
-                                <td>{{ $d->nama_kota}}</td>
-                                <td>{{ $d->telp_skpd}}</td>
-                                <td>{{ $d->email_skpd}}</td>
-                                @if ($d->status_skpd == 1)
+								<td class="profile-image">{{ $d->nama_kota}}</td>
+                                @if ($d->status_kota == 1)
 								<td style="text-align:center;"><button class="custom-badge status-green">Aktif</button></td>
                                 @else
                                 <td style="text-align:center;"><button class="custom-badge status-red">Nonaktif</button></td>
@@ -147,13 +116,13 @@
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 										<div class="dropdown-menu dropdown-menu-end">
-                                            @if ($d->status_skpd == 0)
-                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_skpd) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-check m-r-5"></i> Aktifkan</a>
+                                            @if ($d->status_kota == 0)
+                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_kota) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-check m-r-5"></i> Aktifkan</a>
                                             @else
-                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_skpd) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-ban m-r-5"></i> Nonaktifkan</a>
+                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_kota) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-ban m-r-5"></i> Nonaktifkan</a>
                                             @endif
-											<a type="button" href="" data-id="{{ Crypt::encrypt($d->id_skpd) }}" data-bs-toggle="modal" data-bs-target="#editdata" class="dropdown-item edit"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
-                                            <a type="button" href="" data-id="{{ Crypt::encrypt($d->id_skpd) }}" data-bs-toggle="modal" data-bs-target="#hapusdata" class="dropdown-item hapus"><i class="fa fa-trash-alt m-r-5"></i> Hapus</a>
+											<a type="button" href="" data-id="{{ Crypt::encrypt($d->id_kota) }}" data-bs-toggle="modal" data-bs-target="#editdata" class="dropdown-item edit"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                            <a type="button" href="" data-id="{{ Crypt::encrypt($d->id_kota) }}" data-bs-toggle="modal" data-bs-target="#hapusdata" class="dropdown-item hapus"><i class="fa fa-trash-alt m-r-5"></i> Hapus</a>
                                             </div>
 										</div>
 									</div>
@@ -171,7 +140,7 @@
                                 <h4 class="modal-title">Edit Data</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/adm/skpd/update" method="POST" id="formStore">
+                            <form action="/adm/kota/update" method="POST" id="formStore">
                             @csrf
                             <div class="modal-body p-4" id="loadedit">
                                 {{-- Isi Modal Edit --}}
@@ -229,14 +198,14 @@
 <!-- Button Edit -->
 <script>
 $('.edit').click(function(){
-    var id_skpd = $(this).attr('data-id');
+    var id_kota = $(this).attr('data-id');
     $.ajax({
              type: 'POST',
-             url: '/adm/skpd/edit',
+             url: '/adm/kota/edit',
              cache: false,
              data: {
                  _token: "{{ csrf_token() }}",
-                 id_skpd: id_skpd
+                 id_kota: id_kota
              },
              success: function(respond) {
                  $("#loadedit").html(respond);
@@ -255,14 +224,14 @@ var span = document.getElementsByClassName("close")[0];
 <!-- Button Status -->
 <script>
 $('.stat').click(function(){
-    var id_skpd = $(this).attr('data-id');
+    var id_kota = $(this).attr('data-id');
     $.ajax({
              type: 'POST',
-             url: '/adm/skpd/stat',
+             url: '/adm/kota/stat',
              cache: false,
              data: {
                  _token: "{{ csrf_token() }}",
-                 id_skpd: id_skpd
+                 id_kota: id_kota
              },
              success: function(respond) {
                  $("#loadstatus").html(respond);
@@ -281,14 +250,14 @@ var span = document.getElementsByClassName("close")[0];
 <!-- Button Hapus -->
 <script>
 $('.hapus').click(function(){
-    var id_skpd = $(this).attr('data-id');
+    var id_kota = $(this).attr('data-id');
     $.ajax({
              type: 'POST',
-             url: '/adm/skpd/hapus',
+             url: '/adm/kota/hapus',
              cache: false,
              data: {
                  _token: "{{ csrf_token() }}",
-                 id_skpd: id_skpd
+                 id_kota: id_kota
              },
              success: function(respond) {
                  $("#loadhapus").html(respond);

@@ -84,6 +84,9 @@
 							<a href="/adm/seksi" class="{{ Request::is('adm/seksi') ? 'active' : '' }}" ><span class="menu-side"><i class="fa fa-sitemap"></i></span> <span> Seksi / Bidang </span></a>
 						</li>
                         <li>
+							<a href="/adm/kota" class="{{ Request::is('adm/kota') ? 'active' : '' }}" ><span class="menu-side"><i class="fa fa-flag"></i></span> <span> Kabupaten / Kota </span></a>
+						</li>
+                        <li>
 							<a href="/adm/skpd" class="{{ Request::is('adm/skpd') ? 'active' : '' }}"><span class="menu-side"><i class="fa fa-building"></i></span> <span> SKPD / UPTD </span></a>
 						</li>
                         <li class="submenu">
