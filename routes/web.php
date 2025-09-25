@@ -5,6 +5,7 @@ use App\Http\Controllers\TahunController;
 use App\Http\Controllers\SeksiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\SkpdController;
+use App\Http\Controllers\InstrukturController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
@@ -55,3 +56,13 @@ Route::post('/adm/skpd/status', [SkpdController::class, 'status']);
 Route::post('/adm/skpd/hapus', [SkpdController::class, 'hapus']);
 Route::post('/adm/skpd/delete', [SkpdController::class, 'delete']);
 
+//Crud Instruktur
+Route::get('/adm/instruktur', [InstrukturController::class, 'view']);
+Route::get('/adm/instruktur/profile/{id_instruktur}', [InstrukturController::class, 'profile']);
+Route::post('/adm/instruktur/store', [InstrukturController::class, 'store']);
+Route::post('/adm/instruktur/edit', [InstrukturController::class, 'edit']);
+Route::post('/adm/instruktur/update', [InstrukturController::class, 'update']);
+Route::post('/adm/instruktur/stat', [InstrukturController::class, 'stat']);
+Route::post('/adm/instruktur/status', [InstrukturController::class, 'status']);
+Route::post('/adm/instruktur/hapus', [InstrukturController::class, 'hapus']);
+Route::post('/adm/instruktur/delete', [InstrukturController::class, 'delete']);

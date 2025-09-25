@@ -92,13 +92,13 @@
                         <li class="submenu">
 							<a href="#"><span class="menu-side"><i class="fa fa-user-plus"></i></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="invoices.html">Pengajar</a></li>
+								<li><a href="/adm/instruktur">Pengajar</a></li>
 								<li><a href="payments.html">Peserta</a></li>
 							</ul>
 						</li>
                         <li class="menu-title">Manajemen Diklat</li>
                         <li>
-							<a href="#"><span class="menu-side"><i class="fa fa-calendar"></i></span> <span> Kegiatan Diklat </span></a>
+							<a href="/adm/skpd"><span class="menu-side"><i class="fa fa-calendar"></i></span> <span> Kegiatan Diklat </span></a>
 						</li>
                         <li>
 							<a href="#"><span class="menu-side"><i class="fa fa-user-md"></i></span> <span> Pengajar Diklat </span></a>
