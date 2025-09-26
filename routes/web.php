@@ -5,7 +5,12 @@ use App\Http\Controllers\TahunController;
 use App\Http\Controllers\SeksiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\SkpdController;
+use App\Http\Controllers\JkoperasiController;
+use App\Http\Controllers\jukmController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KdiklatController;
 use App\Http\Controllers\InstrukturController;
+use App\Http\Controllers\DiklatController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
@@ -56,6 +61,36 @@ Route::post('/adm/skpd/status', [SkpdController::class, 'status']);
 Route::post('/adm/skpd/hapus', [SkpdController::class, 'hapus']);
 Route::post('/adm/skpd/delete', [SkpdController::class, 'delete']);
 
+//Crud Jenis Koperasi
+Route::get('/adm/jeniskoperasi', [jkoperasiController::class, 'view']);
+Route::post('/adm/jeniskoperasi/store', [jkoperasiController::class, 'store']);
+Route::post('/adm/jeniskoperasi/edit', [jkoperasiController::class, 'edit']);
+Route::post('/adm/jeniskoperasi/update', [jkoperasiController::class, 'update']);
+Route::post('/adm/jeniskoperasi/stat', [jkoperasiController::class, 'stat']);
+Route::post('/adm/jeniskoperasi/status', [jkoperasiController::class, 'status']);
+Route::post('/adm/jeniskoperasi/hapus', [jkoperasiController::class, 'hapus']);
+Route::post('/adm/jeniskoperasi/delete', [jkoperasiController::class, 'delete']);
+
+//Crud Sektor Usaha UMKM
+Route::get('/adm/sektorusaha', [jukmController::class, 'view']);
+Route::post('/adm/sektorusaha/store', [jukmController::class, 'store']);
+Route::post('/adm/sektorusaha/edit', [jukmController::class, 'edit']);
+Route::post('/adm/sektorusaha/update', [jukmController::class, 'update']);
+Route::post('/adm/sektorusaha/stat', [jukmController::class, 'stat']);
+Route::post('/adm/sektorusaha/status', [jukmController::class, 'status']);
+Route::post('/adm/sektorusaha/hapus', [jukmController::class, 'hapus']);
+Route::post('/adm/sektorusaha/delete', [jukmController::class, 'delete']);
+
+//Crud Kategori Diklat
+Route::get('/adm/kategoridiklat', [KategoriController::class, 'view']);
+Route::post('/adm/kategoridiklat/store', [KategoriController::class, 'store']);
+Route::post('/adm/kategoridiklat/edit', [KategoriController::class, 'edit']);
+Route::post('/adm/kategoridiklat/update', [KategoriController::class, 'update']);
+Route::post('/adm/kategoridiklat/stat', [KategoriController::class, 'stat']);
+Route::post('/adm/kategoridiklat/status', [KategoriController::class, 'status']);
+Route::post('/adm/kategoridiklat/hapus', [KategoriController::class, 'hapus']);
+Route::post('/adm/kategoridiklat/delete', [KategoriController::class, 'delete']);
+
 //Crud Instruktur
 Route::get('/adm/instruktur', [InstrukturController::class, 'view']);
 Route::get('/adm/instruktur/profile/{id_instruktur}', [InstrukturController::class, 'profile']);
@@ -66,3 +101,14 @@ Route::post('/adm/instruktur/stat', [InstrukturController::class, 'stat']);
 Route::post('/adm/instruktur/status', [InstrukturController::class, 'status']);
 Route::post('/adm/instruktur/hapus', [InstrukturController::class, 'hapus']);
 Route::post('/adm/instruktur/delete', [InstrukturController::class, 'delete']);
+
+//Crud Diklat
+Route::get('/adm/diklat', [DiklatController::class, 'view']);
+Route::post('/adm/diklat/store', [DiklatController::class, 'store']);
+Route::post('/adm/diklat/edit', [DiklatController::class, 'edit']);
+Route::post('/adm/diklat/update', [DiklatController::class, 'update']);
+Route::post('/adm/diklat/stat', [DiklatController::class, 'stat']);
+Route::post('/adm/diklat/status', [DiklatController::class, 'status']);
+Route::post('/adm/diklat/hapus', [DiklatController::class, 'hapus']);
+Route::post('/adm/diklat/delete', [DiklatController::class, 'delete']);
+

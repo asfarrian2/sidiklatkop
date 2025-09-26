@@ -75,7 +75,7 @@
                                                 <h3 class="user-name m-t-0 mb-0">{{ $instruktur->nama }}</h3>
                                                 <small class="text-muted">NIK {{ $instruktur->nik }}</small>
                                                 <div class="staff-id">Instansi : {{ $instruktur->instansi }}</div>
-                                                <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Edit Profile</a></div>
+                                                <div class="staff-msg"><a type="button" href="" data-id="{{ Crypt::encrypt($instruktur->id_instruktur) }}" data-bs-toggle="modal" data-bs-target="#editdata" class="btn btn-primary edit">Edit Profile</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">

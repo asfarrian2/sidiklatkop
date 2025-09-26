@@ -84,21 +84,27 @@
 							<a href="/adm/seksi" class="{{ Request::is('adm/seksi') ? 'active' : '' }}" ><span class="menu-side"><i class="fa fa-sitemap"></i></span> <span> Seksi / Bidang </span></a>
 						</li>
                         <li>
-							<a href="/adm/kota" class="{{ Request::is('adm/kota') ? 'active' : '' }}" ><span class="menu-side"><i class="fa fa-flag"></i></span> <span> Kabupaten / Kota </span></a>
-						</li>
-                        <li>
 							<a href="/adm/skpd" class="{{ Request::is('adm/skpd') ? 'active' : '' }}"><span class="menu-side"><i class="fa fa-building"></i></span> <span> SKPD / UPTD </span></a>
 						</li>
                         <li class="submenu">
-							<a href="#"><span class="menu-side"><i class="fa fa-user-plus"></i></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
+							<a href="#"><span class="menu-side"><i class="fa fa-tasks"></i></span> <span> Data Lainnya </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="/adm/instruktur">Pengajar</a></li>
-								<li><a href="payments.html">Peserta</a></li>
+                                <li><a class="{{ Request::is('adm/kota*') ? 'active' : '' }}" href="/adm/kota">Kabupaten/Kota</a></li>
+								<li><a class="{{ Request::is('adm/jeniskoperasi*') ? 'active' : '' }}" href="/adm/jeniskoperasi">Jenis Koperasi</a></li>
+                                <li><a class="{{ Request::is('adm/sektorusaha*') ? 'active' : '' }}" href="/adm/sektorusaha">Sektor Usaha UMKM</a></li>
+                                <li><a class="{{ Request::is('adm/kategoridiklat*') ? 'active' : '' }}" href="/adm/kategoridiklat">Kategori Diklat</a></li>
 							</ul>
 						</li>
                         <li class="menu-title">Manajemen Diklat</li>
+                        <li class="submenu">
+							<a href="#"><span class="menu-side"><i class="fa fa-user-plus"></i></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a class="{{ Request::is('adm/instruktur*') ? 'active' : '' }}" href="/adm/instruktur">Pengajar</a></li>
+								<li><a href="payments.html">Peserta</a></li>
+							</ul>
+						</li>
                         <li>
-							<a href="/adm/skpd"><span class="menu-side"><i class="fa fa-calendar"></i></span> <span> Kegiatan Diklat </span></a>
+							<a href="/adm/diklat"  class="{{ Request::is('adm/diklat*') ? 'active' : '' }}"><span class="menu-side"><i class="fa fa-calendar"></i></span> <span> Kegiatan Diklat </span></a>
 						</li>
                         <li>
 							<a href="#"><span class="menu-side"><i class="fa fa-user-md"></i></span> <span> Pengajar Diklat </span></a>
