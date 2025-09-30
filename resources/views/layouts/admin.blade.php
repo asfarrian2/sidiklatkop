@@ -49,7 +49,7 @@
                     <a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
 						<div class="user-names">
 							<h5>Asfar Rian </h5>
-                        	<span>Admin</span>
+                        	<span>Super Admin</span>
 						</div>
 						<span class="user-img">
 							<img  src="/assets/img/profile.png"  alt="Admin">
@@ -93,6 +93,7 @@
 								<li><a class="{{ Request::is('adm/jeniskoperasi*') ? 'active' : '' }}" href="/adm/jeniskoperasi">Jenis Koperasi</a></li>
                                 <li><a class="{{ Request::is('adm/sektorusaha*') ? 'active' : '' }}" href="/adm/sektorusaha">Sektor Usaha UMKM</a></li>
                                 <li><a class="{{ Request::is('adm/kategoridiklat*') ? 'active' : '' }}" href="/adm/kategoridiklat">Kategori Diklat</a></li>
+                                <li><a class="{{ Request::is('adm/tahunanggaran*') ? 'active' : '' }}" href="/adm/tahunanggaran">Tahun Anggaran</a></li>
 							</ul>
 						</li>
                         <li class="menu-title">Manajemen Diklat</li>
@@ -113,8 +114,12 @@
 							<a href="#"><span class="menu-side"><i class="fa fa-users"></i></span> <span> Peserta Diklat</span></a>
 						</li>
                         <li class="menu-title">Manajemen Akun</li>
-						<li>
-							<a href="#"><span class="menu-side"><i class="fa fa-user-circle"></i></span> <span> Operator </span></a>
+                        <li class="submenu">
+							<a href="#"><span class="menu-side"><i class="fa fa-user-circle"></i></span> <span> Akun </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+                                <li><a class="{{ Request::is('adm/admin*') ? 'active' : '' }}" href="/adm/admin">Admin</a></li>
+								<li><a class="{{ Request::is('adm/operator*') ? 'active' : '' }}" href="/adm/jeniskoperasi">Operator</a></li>
+							</ul>
 						</li>
                         <br><br><br><br><br><br><br><br><br>
                         <li class="menu-title"><span>© 2025 Balatkop-UK Kalsel</span></li>

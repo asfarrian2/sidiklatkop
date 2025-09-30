@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\TahunController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SeksiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\SkpdController;
+use App\Http\Controllers\TahunanggaranController;
 use App\Http\Controllers\JkoperasiController;
 use App\Http\Controllers\jukmController;
 use App\Http\Controllers\KategoriController;
@@ -61,6 +62,16 @@ Route::post('/adm/skpd/status', [SkpdController::class, 'status']);
 Route::post('/adm/skpd/hapus', [SkpdController::class, 'hapus']);
 Route::post('/adm/skpd/delete', [SkpdController::class, 'delete']);
 
+//Crud Tahun Anggaran
+Route::get('/adm/tahunanggaran', [TahunanggaranController::class, 'view']);
+Route::post('/adm/tahunanggaran/store', [TahunanggaranController::class, 'store']);
+Route::post('/adm/tahunanggaran/edit', [TahunanggaranController::class, 'edit']);
+Route::post('/adm/tahunanggaran/update', [TahunanggaranController::class, 'update']);
+Route::post('/adm/tahunanggaran/stat', [TahunanggaranController::class, 'stat']);
+Route::post('/adm/tahunanggaran/status', [TahunanggaranController::class, 'status']);
+Route::post('/adm/tahunanggaran/hapus', [TahunanggaranController::class, 'hapus']);
+Route::post('/adm/tahunanggaran/delete', [TahunanggaranController::class, 'delete']);
+
 //Crud Jenis Koperasi
 Route::get('/adm/jeniskoperasi', [jkoperasiController::class, 'view']);
 Route::post('/adm/jeniskoperasi/store', [jkoperasiController::class, 'store']);
@@ -111,4 +122,15 @@ Route::post('/adm/diklat/stat', [DiklatController::class, 'stat']);
 Route::post('/adm/diklat/status', [DiklatController::class, 'status']);
 Route::post('/adm/diklat/hapus', [DiklatController::class, 'hapus']);
 Route::post('/adm/diklat/delete', [DiklatController::class, 'delete']);
+
+//Crud Admin
+Route::get('/adm/admin', [AdminController::class, 'view']);
+Route::get('/adm/admin/profile/{id_admins}', [AdminController::class, 'profile']);
+Route::post('/adm/admin/store', [AdminController::class, 'store']);
+Route::post('/adm/admin/edit', [AdminController::class, 'edit']);
+Route::post('/adm/admin/update', [AdminController::class, 'update']);
+Route::post('/adm/admin/stat', [AdminController::class, 'stat']);
+Route::post('/adm/admin/status', [AdminController::class, 'status']);
+Route::post('/adm/admin/hapus', [AdminController::class, 'hapus']);
+Route::post('/adm/admin/delete', [AdminController::class, 'delete']);
 
