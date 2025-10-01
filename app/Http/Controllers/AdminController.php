@@ -70,7 +70,7 @@ class AdminController extends Controller
             'pendidikan'    => $pendidikan,
             'no_hp'         => $no_hp,
             'email'         => $email,
-            'instansi'      => $instansi,
+            'id_seksi'      => $instansi,
             'foto'          => $foto,
             'status'        => '1'
         ];

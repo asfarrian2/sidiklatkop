@@ -76,8 +76,20 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="field-3" class="form-label">Kategori Diklat</label>
-                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Kategori Diklat">
+                                            <label for="field-3" class="form-label">Judul</label>
+                                            <input type="text" class="form-control" id="field-3" name="nama" placeholder="Judul Diklat">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="field-3" class="form-label">Tanggal Dimulai</label>
+                                            <input type="date" class="form-control" id="field-3" name="tgl_mulai" placeholder="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="field-3" class="form-label">Tanggal Berakhir</label>
+                                            <input type="date" class="form-control" id="field-3" name="tgl_akhir" placeholder="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="field-3" class="form-label">Lokasi</label>
+                                            <input type="text" class="form-control" id="field-3" name="lokasi" placeholder="Lokasi Pelatihan">
                                         </div>
                                         <div class="mb-3">
                                             <label for="field-3" class="form-label">Seksi / Bidang</label>
@@ -108,9 +120,7 @@
 						<thead>
 							<tr>
 								<th style="text-align:center;">No</th>
-								<th style="text-align:center;">Judul</th>
-                                <th style="text-align:center;">Tanggal Pelaksanaan</th>
-                                <th style="text-align:center;">Lokasi</th>
+								<th style="text-align:center;">Judul / Tanggal / Lokasi</th>
                                 <th style="text-align:center;">Seksi / Bidang</th>
 								<th style="text-align:center;">Status</th>
 								<th ></th>
@@ -120,14 +130,15 @@
                             @foreach ($tabeldata as $d)
 							<tr>
 								<td style="text-align:center;">{{ $loop->iteration }}</td>
-								<td>{{ $d->judul}}</td>
-                                <td>{{ $d->tgl_mulai}} s.d. {{ $d->tgl_akhir }}</td>
-                                <td>{{ $d->lokasi}}</td>
+								<td><b>{{ $d->judul}}</b><br>
+                                    Tanggal : <b>{{ date('d-m-Y', strtotime($d->tgl_mulai)) }}</b> s.d. <b>{{ date('d-m-Y', strtotime($d->tgl_akhir)) }}</b> <br>
+                                    Lokasi : <b>{{ $d->lokasi}}</b>
+                                </td>
                                 <td>{{ $d->nama_seksi}}</td>
                                 @if ($d->status == 1)
-								<td style="text-align:center;"><button class="custom-badge status-green">Selesai</button></td>
+								<td style="text-align:center;"><span class="badge badge-soft-success badge-border">Selesai</span></td>
                                 @else
-                                <td style="text-align:center;"><button class="custom-badge status-yellow">Belum Dilaksanakan / Proses</button></td>
+                                <td style="text-align:center;"><span class="badge badge-soft-warning badge-border">Belum Dilaksanakan / Proses</span></td>
                                 @endif
 								<td class="text-end">
 									<div class="dropdown dropdown-action">
