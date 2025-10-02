@@ -121,8 +121,8 @@
 							<tr>
 								<th style="text-align:center;">No</th>
 								<th style="text-align:center;">Judul / Tanggal / Lokasi</th>
-                                <th style="text-align:center;">Seksi / Bidang</th>
-								<th style="text-align:center;">Status</th>
+                                <th style="text-align:center;">Kategori</th>
+								<th style="text-align:center;">Seksi / Bidang</th>
 								<th ></th>
 							</tr>
 						</thead>
@@ -130,25 +130,44 @@
                             @foreach ($tabeldata as $d)
 							<tr>
 								<td style="text-align:center;">{{ $loop->iteration }}</td>
-								<td><b>{{ $d->judul}}</b><br>
+								<td><b>{{ strtoupper($d->judul)}}</b><br>
                                     Tanggal : <b>{{ date('d-m-Y', strtotime($d->tgl_mulai)) }}</b> s.d. <b>{{ date('d-m-Y', strtotime($d->tgl_akhir)) }}</b> <br>
-                                    Lokasi : <b>{{ $d->lokasi}}</b>
+                                    Lokasi : <b>{{ $d->lokasi}}</b><br>
+                                    @if ($d->status == 1)
+                                    <span class="badge badge-soft-success badge-border">Selesai</span>
+                                    @else
+                                    <span class="badge badge-soft-warning badge-border">Belum Dilaksanakan / Proses</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @foreach ($kategori as $k)
+                                    @if ($d->id_diklat == $k->id_diklat)
+                                    <div class="dropdown action-label">
+										<a class="btn btn-rounded btn-primary dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+											{{ strtoupper($k->kategori) }}
+										</a>
+										<div class="dropdown-menu dropdown-menu-end">
+											<a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#editkategori" class="dropdown-item stat"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#hapuskategori" class="dropdown-item stat"><i class="fa fa-trash-alt m-r-5"></i> Hapus</a>
+										</div>
+									</div>
+                                     <a type="button" class="btn btn-rounded btn-light" data-id="{{ Crypt::encrypt($d->id_diklat) }}"><i class="fa fa-user-md"></i> Pengajar</a>
+                                     <a type="button" class="btn btn-rounded btn-light" data-id="{{ Crypt::encrypt($d->id_diklat) }}"><i class="fa fa-users"></i> Peserta</a>
+                                    <br><br>
+                                    @endif
+                                    @endforeach
                                 </td>
                                 <td>{{ $d->nama_seksi}}</td>
-                                @if ($d->status == 1)
-								<td style="text-align:center;"><span class="badge badge-soft-success badge-border">Selesai</span></td>
-                                @else
-                                <td style="text-align:center;"><span class="badge badge-soft-warning badge-border">Belum Dilaksanakan / Proses</span></td>
-                                @endif
 								<td class="text-end">
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 										<div class="dropdown-menu dropdown-menu-end">
                                             @if ($d->status == 0)
-                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-check m-r-5"></i> Aktifkan</a>
+                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-check m-r-5"></i> Telah Selesai</a>
                                             @else
-                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-ban m-r-5"></i> Nonaktifkan</a>
+                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#statusdata" class="dropdown-item stat"><i class="fa-solid fa-ban m-r-5"></i>Batalkan</a>
                                             @endif
+                                            <a type="button" href="" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#kategoridata" class="dropdown-item kategori"><i class="fa-solid fa-plus"></i> Kategori Pelatihan</a>
 											<a type="button" href="" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#editdata" class="dropdown-item edit"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
                                             <a type="button" href="" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#hapusdata" class="dropdown-item hapus"><i class="fa fa-trash-alt m-r-5"></i> Hapus</a>
                                             </div>
@@ -157,6 +176,7 @@
 								</td>
 							</tr>
                              @endforeach
+
 						</tbody>
 					</table>
 				</div>
@@ -171,6 +191,27 @@
                             <form action="/adm/diklat/update" method="POST" id="formStore">
                             @csrf
                             <div class="modal-body p-4" id="loadedit">
+                                {{-- Isi Modal Edit --}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary waves-effect">Simpan</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Edit Data -->
+                <div id="kategoridata" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kategori Pendidikan dan Pelatihan</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="/adm/diklat/kategoristore" method="POST" id="formStore">
+                            @csrf
+                            <div class="modal-body p-4" id="loadkategori">
                                 {{-- Isi Modal Edit --}}
                             </div>
                             <div class="modal-footer">
@@ -222,6 +263,31 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Button Edit -->
+<script>
+$('.kategori').click(function(){
+    var id_diklat = $(this).attr('data-id');
+    $.ajax({
+             type: 'POST',
+             url: '/adm/diklat/kategori',
+             cache: false,
+             data: {
+                 _token: "{{ csrf_token() }}",
+                 id_diklat: id_diklat
+             },
+             success: function(respond) {
+                 $("#loadkategori").html(respond);
+                 $('.pagu').mask("#.##0", {
+                            reverse:true
+                        });
+             }
+         });
+     $("#kategoridata").modal("show");
+
+});
+var span = document.getElementsByClassName("close")[0];
+</script>
+<!-- END Button kategori -->
 
 <!-- Button Edit -->
 <script>

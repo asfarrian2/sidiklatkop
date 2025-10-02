@@ -118,6 +118,8 @@ Route::get('/adm/diklat', [DiklatController::class, 'view']);
 Route::post('/adm/diklat/store', [DiklatController::class, 'store']);
 Route::post('/adm/diklat/edit', [DiklatController::class, 'edit']);
 Route::post('/adm/diklat/update', [DiklatController::class, 'update']);
+Route::post('/adm/diklat/kategori', [DiklatController::class, 'kategori']);
+Route::post('/adm/diklat/kategoristore', [DiklatController::class, 'kategoristore']);
 Route::post('/adm/diklat/stat', [DiklatController::class, 'stat']);
 Route::post('/adm/diklat/status', [DiklatController::class, 'status']);
 Route::post('/adm/diklat/hapus', [DiklatController::class, 'hapus']);
