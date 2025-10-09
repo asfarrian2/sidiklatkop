@@ -147,12 +147,12 @@
 											{{ strtoupper($k->kategori) }}
 										</a>
 										<div class="dropdown-menu dropdown-menu-end">
-											<a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#editkategori" class="dropdown-item stat"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
-                                            <a type="button" data-id="{{ Crypt::encrypt($d->id_diklat) }}" data-bs-toggle="modal" data-bs-target="#hapuskategori" class="dropdown-item stat"><i class="fa fa-trash-alt m-r-5"></i> Hapus</a>
+											<a type="button" data-id="{{ Crypt::encrypt($k->id_kdiklat) }}" data-bs-toggle="modal" data-bs-target="#editkategori" class="dropdown-item editkategori"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                            <a type="button" data-id="{{ Crypt::encrypt($k->id_kdiklat) }}" data-bs-toggle="modal" data-bs-target="#hapuskategori" class="dropdown-item hapuskategori"><i class="fa fa-trash-alt m-r-5"></i> Hapus</a>
 										</div>
 									</div>
-                                     <a type="button" class="btn btn-rounded btn-light" data-id="{{ Crypt::encrypt($d->id_diklat) }}"><i class="fa fa-user-md"></i> Pengajar</a>
-                                     <a type="button" class="btn btn-rounded btn-light" data-id="{{ Crypt::encrypt($d->id_diklat) }}"><i class="fa fa-users"></i> Peserta</a>
+                                     <a type="button" href="/adm/kategoridiklat/pengajar/{{ Crypt::encrypt($k->id_kdiklat) }}" class="btn btn-rounded btn-light"><i class="fa fa-user-md"></i> Pengajar</a>
+                                     <a type="button" href="/adm/kategoridiklat/peserta/{{ Crypt::encrypt($k->id_kdiklat) }}" class="btn btn-rounded btn-light"><i class="fa fa-users"></i> Peserta</a>
                                     <br><br>
                                     @endif
                                     @endforeach
@@ -222,7 +222,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- / Modal Status Data -->
+                <!-- / Modal Edit Data -->
                 <!-- Modal Status Data -->
                 <div id="statusdata" class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -245,6 +245,42 @@
                                 <h4 class="modal-title"><img src="/assets/img/sent.png" alt="" width="30" height="26"> Peringatan</h4>
                             </div>
                             <div class="modal-body p-4" id="loadhapus">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Modal Hapus Data -->
+                <!-- Modal Edit Kategori Data -->
+                <div id="editkategori" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Kategori Pendidikan dan Pelatihan</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="/adm/diklat/updatekategori" method="POST" id="formStore">
+                            @csrf
+                            <div class="modal-body p-4" id="loadekategori">
+                                {{-- Isi Modal Edit --}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary waves-effect">Simpan</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Modal Edit Data -->
+                <!-- Modal Hapus Kategori Data -->
+                <div id="hapuskategori" class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><img src="/assets/img/sent.png" alt="" width="30" height="26"> Peringatan</h4>
+                            </div>
+                            <div class="modal-body p-4" id="loadhkategori">
 
                             </div>
                         </div>
@@ -361,6 +397,58 @@ $('.hapus').click(function(){
              }
          });
      $("#hapusdata").modal("show");
+
+});
+var span = document.getElementsByClassName("close")[0];
+</script>
+<!-- END Button Hapus -->
+
+<!-- Button Edit Kategori -->
+<script>
+$('.editkategori').click(function(){
+    var id_kdiklat = $(this).attr('data-id');
+    $.ajax({
+             type: 'POST',
+             url: '/adm/diklat/editkategori',
+             cache: false,
+             data: {
+                 _token: "{{ csrf_token() }}",
+                 id_kdiklat: id_kdiklat
+             },
+             success: function(respond) {
+                 $("#loadekategori").html(respond);
+                 $('.pagu').mask("#.##0", {
+                            reverse:true
+                        });
+             }
+         });
+     $("#editkategori").modal("show");
+
+});
+var span = document.getElementsByClassName("close")[0];
+</script>
+<!-- END Button Edit -->
+
+<!-- Button Hapus -->
+<script>
+$('.hapuskategori').click(function(){
+    var id_kdiklat = $(this).attr('data-id');
+    $.ajax({
+             type: 'POST',
+             url: '/adm/diklat/hapuskategori',
+             cache: false,
+             data: {
+                 _token: "{{ csrf_token() }}",
+                 id_kdiklat: id_kdiklat
+             },
+             success: function(respond) {
+                 $("#loadhkategori").html(respond);
+                 $('.pagu').mask("#.##0", {
+                            reverse:true
+                        });
+             }
+         });
+     $("#hapuskategori").modal("show");
 
 });
 var span = document.getElementsByClassName("close")[0];

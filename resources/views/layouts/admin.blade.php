@@ -87,6 +87,13 @@
 							<a href="/adm/skpd" class="{{ Request::is('adm/skpd') ? 'active' : '' }}"><span class="menu-side"><i class="fa fa-building"></i></span> <span> SKPD / UPTD </span></a>
 						</li>
                         <li class="submenu">
+							<a href="#"><span class="menu-side"><i class="fa fa-user-plus"></i></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a class="{{ Request::is('adm/instruktur*') ? 'active' : '' }}" href="/adm/instruktur">Pengajar</a></li>
+								<li><a href="payments.html">Peserta</a></li>
+							</ul>
+						</li>
+                        <li class="submenu">
 							<a href="#"><span class="menu-side"><i class="fa fa-tasks"></i></span> <span> Data Lainnya </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
                                 <li><a class="{{ Request::is('adm/kota*') ? 'active' : '' }}" href="/adm/kota">Kabupaten/Kota</a></li>
@@ -97,13 +104,6 @@
 							</ul>
 						</li>
                         <li class="menu-title">Manajemen Diklat</li>
-                        <li class="submenu">
-							<a href="#"><span class="menu-side"><i class="fa fa-user-plus"></i></span> <span> Biodata </span> <span class="menu-arrow"></span></a>
-							<ul style="display: none;">
-								<li><a class="{{ Request::is('adm/instruktur*') ? 'active' : '' }}" href="/adm/instruktur">Pengajar</a></li>
-								<li><a href="payments.html">Peserta</a></li>
-							</ul>
-						</li>
                         <li>
 							<a href="/adm/diklat"  class="{{ Request::is('adm/diklat*') ? 'active' : '' }}"><span class="menu-side"><i class="fa fa-calendar"></i></span> <span> Kegiatan Diklat </span></a>
 						</li>

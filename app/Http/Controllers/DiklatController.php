@@ -189,7 +189,7 @@ class DiklatController extends Controller
 
     public function delete(Request $request)
     {
-        $id           = $request->id;
+        $id        = $request->id;
         $id_diklat = Crypt::decrypt($id);
         $delete = DB::table('tb_diklat')->where('id_diklat', $id_diklat)->delete();
           if ($delete) {
@@ -216,7 +216,7 @@ class DiklatController extends Controller
         return view('admin.diklat.kategori.add', compact('id', 'diklat', 'kategori'));
     }
 
-        //Simpan Data
+    //Simpan Data
     public function kategoristore(Request $request)
     {
 
@@ -251,6 +251,72 @@ class DiklatController extends Controller
             return Redirect::back()->with(['warning' => 'Data Gagal Disimpan.']);
         }
     }
+
+    //Edit Kategori Data
+    public function editkategori(Request $request)
+    {
+        $id_kdiklat = $request->id_kdiklat;
+        $id = Crypt::decrypt($id_kdiklat);
+
+        $kdiklat = DB::table('tb_kdiklat')
+        ->where('id_kdiklat', $id)
+        ->first();
+
+        $kategori = DB::table('tb_kategori')
+        ->where('status', '1')
+        ->get();
+
+        return view('admin.diklat.kategori.edit', compact('id', 'kdiklat', 'kategori'));
+    }
+
+
+        public function updatekategori(Request $request)
+    {
+        $id = $request->id;
+        $id_kategori       = $request->kategori;
+        $id_kdiklat = Crypt::decrypt($id);
+
+         $data = [
+            'id_kategori'  => $id_kategori
+        ];
+
+        $update = DB::table('tb_kdiklat')->where('id_kdiklat', $id_kdiklat)->update($data);
+          if ($update) {
+            return Redirect::back()->with(['success' => 'Data Berhasil Diubah']);
+        } else {
+            return Redirect::back()->with(['warning' => 'Data Gagal Diubah']);
+        }
+    }
+
+    public function hapuskategori(Request $request)
+    {
+        $id_kdiklat = $request->id_kdiklat;
+        $id = Crypt::decrypt($id_kdiklat);
+
+        $kdiklat = DB::table('tb_kdiklat')
+        ->leftJoin('tb_kategori', 'tb_kdiklat.id_kategori', '=', 'tb_kategori.id_kategori')
+        ->select('tb_kdiklat.*', 'tb_kategori.kategori')
+        ->where('id_kdiklat', $id)
+        ->first();
+
+        $delete = $request->id;
+
+        return view('admin.diklat.kategori.hapus', compact('id', 'kdiklat'));
+    }
+
+
+    public function deletekategori(Request $request)
+    {
+        $id        = $request->id;
+        $id_kdiklat = Crypt::decrypt($id);
+        $delete = DB::table('tb_kdiklat')->where('id_kdiklat', $id_kdiklat)->delete();
+          if ($delete) {
+            return Redirect::back()->with(['success' => 'Data Berhasil Dihapus']);
+        } else {
+            return Redirect::back()->with(['warning' => 'Data Gagal Dihapus']);
+        }
+    }
+
 
 
 }
